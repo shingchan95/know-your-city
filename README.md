@@ -1,4 +1,7 @@
-# Weather Planner APP
-This app allows a user to identify locations of interest with favourable weather conditions and then make travel plans accordingly. The up will provide weather forcasr information for upto 5 days. 
-How it will work:
-When a user click on a city, a pop will show them the weather forcast for that day. In the pop is also an option to in provide to enter the date they want to visit location and how long they want to stay there. Once these input are submitted, they app record this information, and they user can revisit anytime to view any weather changes for the days of the week they have selected.
+## USER STORY
+AS A NATIONAL TOURIST AGENCY,
+I WANT A WEB APPLICATION TO SHOW THE WEATHER ON A MAP AND STORE WEATHER INFORMATION ON NEXT 5 DAYS IN DIFFERENT LOCATION   
+SO THAT TOURIST CAN MAKE GOOD PLAN BASED ON THE WEATHER FOR THEIR TRIP
+
+
+## PROJECT DISCRIPTION 
