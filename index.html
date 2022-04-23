@@ -11,8 +11,8 @@
   
   
   <section class ="container">
-    <div class ="current-info">
-      
+
+    <div class ="current-info">  
       <div class="date-container">
         <div class="time" id="time">
           12:30 <span id="am-pm">PM</span>
@@ -35,12 +35,20 @@
             <div>222</div>
           </div>
         </div>
+
+        <div class="place-container">
+          <div class="time-zone" id="time-zone"> UK / London</div>
+          <div id="country" class="country">Coordinates</div>
+        </div>
       </div>
+
+     
+
+      <aside class = "float-left container" id="borda">
+        <input id="pac-input" class="control" type="text" placeholder="Enter a location">        
+        <div id="map"></div>
+      </aside>
       
-      <div class="place-container">
-        <div class="time-zone" id="time-zone"> UK / London</div>
-        <div id="country" class="country">Coordinates</div>
-      </div>
     </div>
     
   </section>
@@ -93,12 +101,6 @@
 
     </div>
   </div>
-
-  <aside  class = "float-left container" id="borda">
-    <input id="pac-input" class="control" type="text" placeholder="Enter a location">        
-    <div id="map"></div>
-  </aside>
-  
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr-Av0kS8QAYgzV2dOHJXomDn8rxTcsRA&callback=initMap&libraries=places"></script>
   <script src="script.js"></script>
