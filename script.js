@@ -190,8 +190,17 @@ function addcity(){
   addCityBut.addEventListener("click",Adding)
   
   function Adding(){
-    cityInput.push(cityName)
-   var weatherPlannerC= document.getElementById("weatherPlanner")
+    var weatherPlannerC= document.getElementById("weatherPlanner")
+
+    if(cityInput.length<5){
+      cityInput.push(cityName)
+    }
+    else if(cityInput.length==5){
+      cityInput=[]
+    }
+
+    
+
 
    for(i=0;i<5;i++){
      var weatherPlannerId = weatherPlannerC.children[i].id
@@ -199,7 +208,6 @@ function addcity(){
      wpID.textContent=cityInput[i]
      
     }
-    
    }
   }
 
