@@ -1,11 +1,56 @@
 input = document.getElementById('pac-input')
-
-
 let inputLat
 let inputLng
 let map
 var markers = []
 var iconImage = 'https://maps.google.com/mapfiles/marker_black.png'
+var cityName;
+
+
+function getApi() {
+  var iLa= inputLat
+  var iLn= inputLng
+
+ 
+
+  const API = '30d2e66c96244fb068a88960c18a85c9'
+  const units = 'metric'
+  const exclude = 'hourly, minutely, alerts'
+  const lang = 'Eng'
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${iLa}&lon=${iLn}&appid=${API}&units=${units}&exclude=${exclude}&lang=${lang}`
+
+
+  fetch(url)
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+
+
+     const currentHumidity = document.getElementById('getHumidity')
+     currentHumidity.textContent = data.current.humidity
+    
+    }    
+    )
+}
+
+function citySearch(){
+
+  var APIkey = '30d2e66c96244fb068a88960c18a85c9'
+  var cityLat= inputLat
+  var cityLon= inputLng
+  var weatherAPI="http://api.openweathermap.org/geo/1.0/reverse?lat="+cityLat+"&lon="+cityLon+"&appid="+APIkey
+
+
+    fetch(weatherAPI)
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+
+      cityName= data[0].name
+    })
+  }
 
 function deleteMarkers() {
   
@@ -31,23 +76,20 @@ function initMap() {
     center: myLatlng,
   })
   
-
-
   const input = document.getElementById('pac-input')
   const searchBox = new google.maps.places.SearchBox(input)
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
   
   map.addListener('bounds_changed', () => {
     searchBox.setBounds(map.getBounds())
+ 
   })
-  
   
   searchBox.addListener('places_changed', () => {
     hideMarkers()
+    citySearch()
     const places = searchBox.getPlaces()
 
-
-    
     if (places.length == 0) {
       return
     }
@@ -68,7 +110,6 @@ function initMap() {
         scaledSize: new google.maps.Size(25, 25),
       }
 
-
       //input cooridinate
       inputLat = place.geometry.location.lat()
       inputLng = place.geometry.location.lng()  
@@ -82,8 +123,7 @@ function initMap() {
           position: place.geometry.location,
           icon: iconImage,
           animation: google.maps.Animation.BOUNCE,
-
-            
+     
         })
       )
         
@@ -118,14 +158,15 @@ function initMap() {
         title: 'city',
         animation: google.maps.Animation.BOUNCE,
             
-
-
       })
+      
+
     )
 
     console.log(inputLat)
     console.log(inputLng)
-      
+      getApi()
+      citySearch()
 
   })
 
@@ -139,33 +180,8 @@ function initMap() {
 
 }
     
-    
-function getApi() {
-  
-  const API = '30d2e66c96244fb068a88960c18a85c9'
-  const inputLat = '53.504010708083136'
-  const inputLng = '-2.142103173828125'
-  const units = 'metric'
-  const exclude = 'hourly, minutely, alerts'
-  const lang = 'Eng'
-  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${inputLat}&lon=${inputLng}&appid=${API}&units=${units}&exclude=${exclude}&lang=${lang}`
 
-  fetch(url)
-    .then(function (response) {
-      return response.json()
-    })
-    .then(function (data) {
-      console.log(data)
 
-      const currentHumidity = document.getElementById('getHumidity')
-      currentHumidity.textContent = data.current.humidity
-    
-    }    
-    )
-}
-getApi()
 
-    
-    
 
 
