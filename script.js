@@ -1,7 +1,6 @@
 input= document.getElementById("pac-input")
 
-let clickLat;
-let clickLng;
+
 let inputLat;
 let inputLng;
 let map;
@@ -108,12 +107,12 @@ function initMap() {
       map.addListener("click", (mapsMouseEvent) => {
         hideMarkers()
         clickPos= mapsMouseEvent.latLng.toJSON()
-        clickLat=clickPos.lat;
-        clickLng=clickPos.lng;
+        inputLat=clickPos.lat;
+        inputLng=clickPos.lng;
 
         markers.push(
         new google.maps.Marker({
-            position: {lat: clickLat, lng: clickLng},
+            position: {lat: inputLat, lng: inputLng},
             map: map,
             icon: iconImage,
             title: "city",
@@ -124,18 +123,25 @@ function initMap() {
         })
         );
 
-      console.log(clickLat)
-      console.log(clickLng)
+      console.log(inputLat)
+      console.log(inputLng)
       
 
       });
 
   
       //cooridnate output
-      //console.log(clickLat)
-      //console.log(clickLng)
+      //console.log(inputLat)
+      //console.log(inputLng)
       //console.log(inputLat)
       //console.log(inputLng)
       
 
     }
+    
+    
+
+    
+    
+
+
