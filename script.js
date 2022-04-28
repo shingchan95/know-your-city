@@ -1,145 +1,169 @@
-input= document.getElementById("pac-input")
+input = document.getElementById('pac-input')
 
 
-let inputLat;
-let inputLng;
-let map;
-var markers = [];
-var iconImage = "https://maps.google.com/mapfiles/marker_black.png"
+let inputLat
+let inputLng
+let map
+var markers = []
+var iconImage = 'https://maps.google.com/mapfiles/marker_black.png'
 
 function deleteMarkers() {
   
-  markers = [];
+  markers = []
 }
 
 function setMapOnAll(map) {
   for (let i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+    markers[i].setMap(map)
   }
 }
 
 // Removes the markers from the map, but keeps them in the array.
 function hideMarkers() {
-  setMapOnAll(null);
+  setMapOnAll(null)
 }
 
 function initMap() {
  
-  const myLatlng = { lat: 53.4795, lng: -2.2451 };
-  const map = new google.maps.Map(document.getElementById("map"), {
+  const myLatlng = { lat: 53.4795, lng: -2.2451 }
+  const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
     center: myLatlng,
-  });
+  })
   
 
 
-  const input = document.getElementById("pac-input");
-  const searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  const input = document.getElementById('pac-input')
+  const searchBox = new google.maps.places.SearchBox(input)
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
   
-  map.addListener("bounds_changed", () => {
-    searchBox.setBounds(map.getBounds());
-  });
+  map.addListener('bounds_changed', () => {
+    searchBox.setBounds(map.getBounds())
+  })
   
   
-  searchBox.addListener("places_changed", () => {
+  searchBox.addListener('places_changed', () => {
     hideMarkers()
-    const places = searchBox.getPlaces();
+    const places = searchBox.getPlaces()
 
 
     
     if (places.length == 0) {
-      return;
+      return
     }
-      // For each place, get the icon, name and location.
-      const bounds = new google.maps.LatLngBounds();
+    // For each place, get the icon, name and location.
+    const bounds = new google.maps.LatLngBounds()
   
-      places.forEach((place) => {
-        if (!place.geometry || !place.geometry.location) {
-          console.log("Returned place contains no geometry");
-          return;
-        }
+    places.forEach((place) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log('Returned place contains no geometry')
+        return
+      }
   
-        const icon = {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25),
-        };
+      const icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25),
+      }
 
 
-        //input cooridinate
-        inputLat= place.geometry.location.lat();
-        inputLng = place.geometry.location.lng();  
+      //input cooridinate
+      inputLat = place.geometry.location.lat()
+      inputLng = place.geometry.location.lng()  
         
-        // Create a marker for each place.
-        markers.push(
-          new google.maps.Marker({
-            map,
-            icon,
-            title: place.name,
-            position: place.geometry.location,
-            icon: iconImage,
-            animation: google.maps.Animation.BOUNCE
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          map,
+          icon,
+          title: place.name,
+          position: place.geometry.location,
+          icon: iconImage,
+          animation: google.maps.Animation.BOUNCE,
 
             
-          })
-          );
+        })
+      )
         
-         if (place.geometry.viewport) {
-            // Only geocodes have viewport.
-            bounds.union(place.geometry.viewport);
-          } else {
-           bounds.extend(place.geometry.location);
-          }
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport)
+      } else {
+        bounds.extend(place.geometry.location)
+      }
           
-        });
-      var latLng = new google.maps.LatLng(inputLat, inputLng); //Makes a latlng
-      map.panTo(latLng);
-      console.log(inputLat)
-      console.log(inputLng)
+    })
+    var latLng = new google.maps.LatLng(inputLat, inputLng) //Makes a latlng
+    map.panTo(latLng)
+    console.log(inputLat)
+    console.log(inputLng)
     
-    });
+  })
    
       
       
-      map.addListener("click", (mapsMouseEvent) => {
-        hideMarkers()
-        clickPos= mapsMouseEvent.latLng.toJSON()
-        inputLat=clickPos.lat;
-        inputLng=clickPos.lng;
+  map.addListener('click', (mapsMouseEvent) => {
+    hideMarkers()
+    clickPos = mapsMouseEvent.latLng.toJSON()
+    inputLat = clickPos.lat
+    inputLng = clickPos.lng
 
-        markers.push(
-        new google.maps.Marker({
-            position: {lat: inputLat, lng: inputLng},
-            map: map,
-            icon: iconImage,
-            title: "city",
-            animation: google.maps.Animation.BOUNCE
+    markers.push(
+      new google.maps.Marker({
+        position: { lat: inputLat, lng: inputLng },
+        map: map,
+        icon: iconImage,
+        title: 'city',
+        animation: google.maps.Animation.BOUNCE,
             
 
 
-        })
-        );
+      })
+    )
 
-      console.log(inputLat)
-      console.log(inputLng)
+    console.log(inputLat)
+    console.log(inputLng)
       
 
-      });
+  })
 
   
-      //cooridnate output
-      //console.log(inputLat)
-      //console.log(inputLng)
-      //console.log(inputLat)
-      //console.log(inputLng)
+  //cooridnate output
+  //console.log(inputLat)
+  //console.log(inputLng)
+  //console.log(inputLat)
+  //console.log(inputLng)
       
 
-    }
+}
     
     
+function getApi() {
+  
+  const API = '30d2e66c96244fb068a88960c18a85c9'
+  const inputLat = '53.504010708083136'
+  const inputLng = '-2.142103173828125'
+  const units = 'metric'
+  const exclude = 'hourly, minutely, alerts'
+  const lang = 'Eng'
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${inputLat}&lon=${inputLng}&appid=${API}&units=${units}&exclude=${exclude}&lang=${lang}`
+
+  fetch(url)
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      console.log(data)
+
+      const currentHumidity = document.getElementById('getHumidity')
+      currentHumidity.textContent = data.current.humidity
+    
+    }    
+    )
+}
+getApi()
 
     
     
