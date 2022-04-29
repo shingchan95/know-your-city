@@ -199,8 +199,6 @@ function addcity(){
       cityInput=[]
     }
 
-    
-
 
    for(i=0;i<5;i++){
      var weatherPlannerId = weatherPlannerC.children[i].id
