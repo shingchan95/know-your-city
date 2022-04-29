@@ -28,8 +28,27 @@ function getApi() {
     .then(function (data) {
 
 
-     const currentHumidity = document.getElementById('getHumidity')
-     currentHumidity.textContent = data.current.humidity
+
+      const currentHumidity = document.getElementById('getHumidity')
+      currentHumidity.textContent = data.current.humidity
+      const currentPressure = document.getElementById('getPressure')
+      currentPressure.textContent = data.current.pressure
+      const currentWindSpeed = document.getElementById('getWindSpeed')
+      currentWindSpeed.textContent = data.current.wind_speed
+      const sunriseToday = document.getElementById('getSunrise')
+      sunriseToday.textContent = data.current.sunrise
+      const sunsetToday = document.getElementById('getSunset')
+      sunsetToday.textContent = data.current.sunset
+      const tempToday = document.getElementById('getTemp')
+      tempToday.textContent = data.current.temp
+     
+      const tDay0 = document.getElementById('tempDay0')
+      tDay0.textContent = data.daily[0].temp.day
+      const tNight0 = document.getElementById('tempNightDay0')
+      tNight0.textContent = data.daily[0].temp.night
+    
+
+
     
     }    
     )
@@ -43,7 +62,7 @@ function citySearch(){
   var weatherAPI="http://api.openweathermap.org/geo/1.0/reverse?lat="+cityLat+"&lon="+cityLon+"&appid="+APIkey
 
 
-    fetch(weatherAPI)
+  fetch(weatherAPI)
     .then(function (response) {
       return response.json()
     })
@@ -51,7 +70,7 @@ function citySearch(){
 
       cityName= data[0].name
     })
-  }
+}
 
 function deleteMarkers() {
   
@@ -166,8 +185,8 @@ function initMap() {
 
     console.log(inputLat)
     console.log(inputLng)
-      getApi()
-      citySearch()
+    getApi()
+    citySearch()
 
   })
 
@@ -200,14 +219,14 @@ function addcity(){
     }
 
 
-   for(i=0;i<5;i++){
-     var weatherPlannerId = weatherPlannerC.children[i].id
-     wpID= document.getElementById(weatherPlannerId)
-     wpID.textContent=cityInput[i]
+    for(i=0;i<5;i++){
+      var weatherPlannerId = weatherPlannerC.children[i].id
+      wpID= document.getElementById(weatherPlannerId)
+      wpID.textContent=cityInput[i]
      
     }
-   }
   }
+}
 
 
 
