@@ -6,6 +6,7 @@ var markers = []
 var iconImage = 'https://maps.google.com/mapfiles/marker_black.png'
 var cityName;
 
+var count = 1
 
 function getApi() {
   var iLa= inputLat
@@ -159,7 +160,7 @@ function initMap() {
         animation: google.maps.Animation.BOUNCE,
             
       })
-      
+
 
     )
 
@@ -179,9 +180,36 @@ function initMap() {
       
 
 }
+
+
+var cityInput=[]
+addcity()
+function addcity(){
+  var addCityBut=document.getElementById("addCity")
+  
+  addCityBut.addEventListener("click",Adding)
+  
+  function Adding(){
+    var weatherPlannerC= document.getElementById("weatherPlanner")
+
+    if(cityInput.length<5){
+      cityInput.push(cityName)
+    }
+    else if(cityInput.length==5){
+      cityInput=[]
+    }
+
     
 
 
+   for(i=0;i<5;i++){
+     var weatherPlannerId = weatherPlannerC.children[i].id
+     wpID= document.getElementById(weatherPlannerId)
+     wpID.textContent=cityInput[i]
+     
+    }
+   }
+  }
 
 
 
