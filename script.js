@@ -35,10 +35,10 @@ function getApi() {
       currentPressure.textContent = data.current.pressure
       const currentWindSpeed = document.getElementById('getWindSpeed')
       currentWindSpeed.textContent = data.current.wind_speed
-      const sunriseToday = document.getElementById('getSunrise')
-      sunriseToday.textContent = data.current.sunrise
-      const sunsetToday = document.getElementById('getSunset')
-      sunsetToday.textContent = data.current.sunset
+      // const sunriseToday = document.getElementById('getSunrise')
+      // sunriseToday.textContent = data.current.sunrise
+      // const sunsetToday = document.getElementById('getSunset')
+      // sunsetToday.textContent = data.current.sunset
       const tempToday = document.getElementById('getTemp')
       tempToday.textContent = data.current.temp
       
