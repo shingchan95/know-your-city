@@ -278,6 +278,7 @@ function initMap() {
       )
       getApi()
       citySearch()
+      display()
      
   
       console.log(inputLat)
@@ -305,6 +306,7 @@ function addcity(){
   addCityBut.addEventListener("click",Adding)
   
   function Adding(){
+    
     var weatherPlannerC= document.getElementById("weatherPlanner")
 
     if(cityInput.length<5){
@@ -319,14 +321,25 @@ function addcity(){
       var weatherPlannerId = weatherPlannerC.children[i].id
       wpID= document.getElementById(weatherPlannerId)
       wpID.textContent=cityInput[i]
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 6e1c70fe0d5e62ea992216881fd17542312ad370
      
     }
   }
+  
 }
 
-function displaying(){
-
+function display(){
+document.querySelector(".current-info .others, .city").style.display ="flex"
+document.querySelector(".current-info .city").style.display ="flex"
+document.querySelector(".add-city").style.display ="flex"
+document.querySelector(".place-container .time-zone").style.display ="flex"
+document.querySelector(".place-container .country").style.display ="flex"
+document.querySelector(".weather-planner").style.display ="flex"
+document.querySelector(".future-forecast").style.display ="flex"
 }
 
 
