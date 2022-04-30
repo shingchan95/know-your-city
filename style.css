@@ -55,18 +55,18 @@ body{
 .place-container .time-zone {
   font-size: 30px;
   font-weight: 100;
-  display:none;
+  display:flex;
 }
 
 .place-container .country {
   font-size: 12px;
   font-weight: 700;
-  display:none;
+  display:flex;
 }
 
 .others,
 .city {
-  display:none;
+  display:flex;
   flex-direction: column;
   background: rgba(24, 24, 27, 0.6) ;
   padding:20px;
@@ -82,7 +82,7 @@ body{
 }
 
 .add-city {
-  display:none;
+  display:flex;
   flex-direction: column;
   background: rgba(24, 24, 27, 0.6) ;
   border-radius:10px;
@@ -107,7 +107,7 @@ body{
 
 .weather-planner {
   font-size: 30px;
-  display:none;
+
 }
 
 .future-forecast {
@@ -115,7 +115,7 @@ body{
   padding: 25px;
   position: fixed;
   bottom:0;
-  display: none;
+  display: flex;
   color: white;
   width:100%;
   align-items: center;
@@ -183,7 +183,7 @@ body{
   }
   .future-forecast{
     justify-content: start;
-    align-items: none;
+    align-items: flex;
     overflow-y: scroll;
   }
 

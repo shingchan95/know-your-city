@@ -11,12 +11,11 @@ var LocaLng;
 
 var count = 1
 
-LocalGet()
 
+LocalGet
 addcity()
 
 function getApi() {
-
   var iLa= LocaLat
   var iLn= LocaLng
 
@@ -148,7 +147,7 @@ function getApi() {
 
 
 function citySearch(){
-  
+  LocalGet()
   var APIkey = '137f617b3a8be25de11fcd61cb376091'
   var cityLat= LocaLat
   var cityLon= LocaLng
@@ -290,7 +289,7 @@ function initMap() {
       
       getApi()
       citySearch()
-      display()
+   
       LocalSave()
      
   
@@ -369,7 +368,7 @@ function LocalGet(){
   LocaLng= localStorage.getItem("lng-history")
   if(LocaLat!==null || LocaLng!==null){
     getApi()
-    display()
+
 
 
   }
