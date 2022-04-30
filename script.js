@@ -140,13 +140,13 @@ function getApi() {
     )
 }
 
+
 function citySearch(){
 
   var APIkey = '30d2e66c96244fb068a88960c18a85c9'
   var cityLat= inputLat
   var cityLon= inputLng
   var weatherAPI="http://api.openweathermap.org/geo/1.0/reverse?lat="+cityLat+"&lon="+cityLon+"&appid="+APIkey
-
 
   fetch(weatherAPI)
     .then(function (response) {
@@ -155,8 +155,12 @@ function citySearch(){
     .then(function (data) {
 
       cityName= data[0].name
+      var indextCity =document.getElementById("time-zone")
+      indextCity.textContent=cityName
+
     })
 }
+
 
 function deleteMarkers() {
   
@@ -188,12 +192,15 @@ function initMap() {
   
   map.addListener('bounds_changed', () => {
     searchBox.setBounds(map.getBounds())
+    
  
   })
   
   searchBox.addListener('places_changed', () => {
+    
+    getApi()
     hideMarkers()
-    citySearch()
+
     const places = searchBox.getPlaces()
 
     if (places.length == 0) {
@@ -219,7 +226,7 @@ function initMap() {
       //input cooridinate
       inputLat = place.geometry.location.lat()
       inputLng = place.geometry.location.lng()  
-        
+      citySearch()  
       // Create a marker for each place.
       markers.push(
         new google.maps.Marker({
@@ -251,11 +258,12 @@ function initMap() {
       
       
   map.addListener('click', (mapsMouseEvent) => {
+   
     hideMarkers()
     clickPos = mapsMouseEvent.latLng.toJSON()
     inputLat = clickPos.lat
     inputLng = clickPos.lng
-
+    
     markers.push(
       new google.maps.Marker({
         position: { lat: inputLat, lng: inputLng },
@@ -263,16 +271,18 @@ function initMap() {
         icon: iconImage,
         title: 'city',
         animation: google.maps.Animation.BOUNCE,
-            
+        
       })
-
-
-    )
-
-    console.log(inputLat)
-    console.log(inputLng)
-    getApi()
-    citySearch()
+      
+      
+      )
+      getApi()
+      citySearch()
+     
+  
+      console.log(inputLat)
+      console.log(inputLng)
+   
 
   })
 
@@ -290,8 +300,8 @@ function initMap() {
 var cityInput=[]
 addcity()
 function addcity(){
+
   var addCityBut=document.getElementById("addCity")
-  
   addCityBut.addEventListener("click",Adding)
   
   function Adding(){
@@ -312,6 +322,10 @@ function addcity(){
      
     }
   }
+}
+
+function displaying(){
+
 }
 
 
