@@ -5,16 +5,22 @@ let map
 var markers = []
 var iconImage = 'https://maps.google.com/mapfiles/marker_black.png'
 var cityName;
+var cityCount=[];
+var LocaLat;
+var LocaLng;
 
 var count = 1
 
+LocalGet()
+
+addcity()
+
 function getApi() {
-  var iLa= inputLat
-  var iLn= inputLng
 
- 
+  var iLa= LocaLat
+  var iLn= LocaLng
 
-  const API = '30d2e66c96244fb068a88960c18a85c9'
+  const API = '137f617b3a8be25de11fcd61cb376091'
   const units = 'metric'
   const exclude = 'hourly, minutely, alerts'
   const lang = 'Eng'
@@ -142,10 +148,10 @@ function getApi() {
 
 
 function citySearch(){
-
-  var APIkey = '30d2e66c96244fb068a88960c18a85c9'
-  var cityLat= inputLat
-  var cityLon= inputLng
+  
+  var APIkey = '137f617b3a8be25de11fcd61cb376091'
+  var cityLat= LocaLat
+  var cityLon= LocaLng
   var weatherAPI="http://api.openweathermap.org/geo/1.0/reverse?lat="+cityLat+"&lon="+cityLon+"&appid="+APIkey
 
   fetch(weatherAPI)
@@ -158,8 +164,11 @@ function citySearch(){
       var indextCity =document.getElementById("time-zone")
       indextCity.textContent=cityName
 
+      console.log(cityName)
     })
 }
+
+
 
 
 function deleteMarkers() {
@@ -226,7 +235,8 @@ function initMap() {
       //input cooridinate
       inputLat = place.geometry.location.lat()
       inputLng = place.geometry.location.lng()  
-      citySearch()  
+
+      LocalSave()
       // Create a marker for each place.
       markers.push(
         new google.maps.Marker({
@@ -252,6 +262,7 @@ function initMap() {
     map.panTo(latLng)
     console.log(inputLat)
     console.log(inputLng)
+
     
   })
    
@@ -276,9 +287,11 @@ function initMap() {
       
       
       )
+      
       getApi()
       citySearch()
       display()
+      LocalSave()
      
   
       console.log(inputLat)
@@ -298,8 +311,7 @@ function initMap() {
 }
 
 
-var cityInput=[]
-addcity()
+
 function addcity(){
 
   var addCityBut=document.getElementById("addCity")
@@ -307,23 +319,28 @@ function addcity(){
   
   function Adding(){
     
+    console.log(cityName)
     var weatherPlannerC= document.getElementById("weatherPlanner")
+    
 
-    if(cityInput.length<5){
-      cityInput.push(cityName)
+    if(cityCount.length<5){
+      cityCount.push(cityName)
+     
+      
     }
-    else if(cityInput.length==5){
-      cityInput=[]
+    else if(cityCount.length==5){
+      cityCount=[]
     }
 
 
     for(i=0;i<5;i++){
       var weatherPlannerId = weatherPlannerC.children[i].id
       wpID= document.getElementById(weatherPlannerId)
-      wpID.textContent=cityInput[i]
+      wpID.textContent=cityCount[i]
 
      
     }
+    
   }
   
 }
@@ -340,3 +357,23 @@ document.querySelector(".future-forecast").style.display ="flex"
 
 
 
+
+function LocalSave(){
+  localStorage.setItem("lat-history",JSON.stringify(inputLat)) 
+  localStorage.setItem("lng-history",JSON.stringify(inputLng)) 
+}
+  
+
+function LocalGet(){
+  LocaLat= localStorage.getItem("lat-history")
+  LocaLng= localStorage.getItem("lng-history")
+  if(LocaLat!==null || LocaLng!==null){
+    getApi()
+    display()
+
+
+  }
+ 
+}
+
+//change the API latlon variable to localstorage 
