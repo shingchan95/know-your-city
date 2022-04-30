@@ -319,6 +319,7 @@ function addcity(){
       var weatherPlannerId = weatherPlannerC.children[i].id
       wpID= document.getElementById(weatherPlannerId)
       wpID.textContent=cityInput[i]
+      
      
     }
   }
