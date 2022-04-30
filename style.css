@@ -50,6 +50,7 @@ body{
 }
 .place-container {
   text-align: left;
+  display:none;
 }
 
 .place-container .time-zone {
@@ -66,7 +67,7 @@ body{
 
 .others,
 .city {
-  display:flex;
+  display:none;
   flex-direction: column;
   background: rgba(24, 24, 27, 0.6) ;
   padding:20px;
@@ -107,6 +108,7 @@ body{
 
 .weather-planner {
   font-size: 30px;
+  display: none;
 
 }
 
@@ -115,7 +117,7 @@ body{
   padding: 25px;
   position: fixed;
   bottom:0;
-  display: flex;
+  display: none;
   color: white;
   width:100%;
   align-items: center;
