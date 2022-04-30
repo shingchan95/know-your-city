@@ -64,7 +64,7 @@ body{
   display:none;
 }
 
-.current-info .others,
+.others,
 .city {
   display:none;
   flex-direction: column;
@@ -77,7 +77,7 @@ body{
 }
 
 .current-info .others .weather-item {
-  display:none;
+  display:flex;
   justify-content: space-between;
 }
 
