@@ -289,7 +289,7 @@ function initMap() {
       
       getApi()
       citySearch()
-   
+      display()
       LocalSave()
      
   
@@ -345,12 +345,9 @@ function addcity(){
 }
 
 function display(){
-document.querySelector(".current-info .others").style.display ="flex"
-document.querySelector(".current-info .city").style.display ="flex"
-document.querySelector(".add-city").style.display ="flex"
-document.querySelector(".place-container .time-zone").style.display ="flex"
-document.querySelector(".place-container .country").style.display ="flex"
+document.querySelector(".place-container").style.display ="flex"
 document.querySelector(".weather-planner").style.display ="flex"
+document.querySelector(".others").style.display ="flex"
 document.querySelector(".future-forecast").style.display ="flex"
 }
 
