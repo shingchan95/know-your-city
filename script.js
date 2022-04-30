@@ -51,10 +51,10 @@ function getApi() {
       pressure0.textContent = data.daily[0].pressure
       const humidity0 = document.getElementById('humidityDay0')
       humidity0.textContent = data.daily[0].humidity
-      const sunrise0 = document.getElementById('sunriseDay0')
-      sunrise0.textContent = data.daily[0].sunrise
-      const sunset0 = document.getElementById('sunsetDay0')
-      sunset0.textContent = data.daily[0].sunset
+      // const sunrise0 = document.getElementById('sunriseDay0')
+      // sunrise0.textContent = data.daily[0].sunrise
+      // const sunset0 = document.getElementById('sunsetDay0')
+      // sunset0.textContent = data.daily[0].sunset
 
 
       //week 1
@@ -67,10 +67,10 @@ function getApi() {
       pressure1.textContent = data.daily[1].pressure
       const humidity1 = document.getElementById('humidityDay1')
       humidity1.textContent = data.daily[1].humidity
-      const sunrise1 = document.getElementById('sunriseDay1')
-      sunrise1.textContent = data.daily[1].sunrise
-      const sunset1 = document.getElementById('sunsetDay1')
-      sunset1.textContent = data.daily[1].sunset
+      // const sunrise1 = document.getElementById('sunriseDay1')
+      // sunrise1.textContent = data.daily[1].sunrise
+      // const sunset1 = document.getElementById('sunsetDay1')
+      // sunset1.textContent = data.daily[1].sunset
 
       //week 2
 
@@ -82,10 +82,10 @@ function getApi() {
       pressure2.textContent = data.daily[2].pressure
       const humidity2 = document.getElementById('humidityDay2')
       humidity2.textContent = data.daily[2].humidity
-      const sunrise2 = document.getElementById('sunriseDay2')
-      sunrise2.textContent = data.daily[2].sunrise
-      const sunset2 = document.getElementById('sunsetDay2')
-      sunset2.textContent = data.daily[2].sunset
+      // const sunrise2 = document.getElementById('sunriseDay2')
+      // sunrise2.textContent = data.daily[2].sunrise
+      // const sunset2 = document.getElementById('sunsetDay2')
+      // sunset2.textContent = data.daily[2].sunset
 
       //week 3
 
@@ -97,10 +97,10 @@ function getApi() {
       pressure3.textContent = data.daily[3].pressure
       const humidity3 = document.getElementById('humidityDay3')
       humidity3.textContent = data.daily[3].humidity
-      const sunrise3 = document.getElementById('sunriseDay3')
-      sunrise3.textContent = data.daily[3].sunrise
-      const sunset3 = document.getElementById('sunsetDay3')
-      sunset3.textContent = data.daily[3].sunset
+      // const sunrise3 = document.getElementById('sunriseDay3')
+      // sunrise3.textContent = data.daily[3].sunrise
+      // const sunset3 = document.getElementById('sunsetDay3')
+      // sunset3.textContent = data.daily[3].sunset
 
       //week 4
 
@@ -112,10 +112,10 @@ function getApi() {
       pressure4.textContent = data.daily[4].pressure
       const humidity4 = document.getElementById('humidityDay4')
       humidity4.textContent = data.daily[4].humidity
-      const sunrise4 = document.getElementById('sunriseDay4')
-      sunrise4.textContent = data.daily[4].sunrise
-      const sunset4 = document.getElementById('sunsetDay4')
-      sunset4.textContent = data.daily[4].sunset
+      // const sunrise4 = document.getElementById('sunriseDay4')
+      // sunrise4.textContent = data.daily[4].sunrise
+      // const sunset4 = document.getElementById('sunsetDay4')
+      // sunset4.textContent = data.daily[4].sunset
 
       //week 5
       const tDay5 = document.getElementById('tempDay5')
@@ -126,10 +126,10 @@ function getApi() {
       pressure5.textContent = data.daily[5].pressure
       const humidity5 = document.getElementById('humidityDay5')
       humidity5.textContent = data.daily[5].humidity
-      const sunrise5 = document.getElementById('sunriseDay5')
-      sunrise5.textContent = data.daily[5].sunrise
-      const sunset5 = document.getElementById('sunsetDay5')
-      sunset5.textContent = data.daily[5].sunset
+      // const sunrise5 = document.getElementById('sunriseDay5')
+      // sunrise5.textContent = data.daily[5].sunrise
+      // const sunset5 = document.getElementById('sunsetDay5')
+      // sunset5.textContent = data.daily[5].sunset
 
 
     
