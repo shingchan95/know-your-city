@@ -345,7 +345,7 @@ function addcity(){
 }
 
 function display(){
-document.querySelector(".place-container").style.display ="flex"
+//document.querySelector(".place-container").style.display ="flex"
 document.querySelector(".weather-planner").style.display ="flex"
 document.querySelector(".others").style.display ="flex"
 document.querySelector(".future-forecast").style.display ="flex"
