@@ -53,10 +53,10 @@ body{
   display:none;
 }
 
-.place-container .time-zone {
+#time-zone {
   font-size: 30px;
   font-weight: 100;
-  display:flex;
+  display:none;
 }
 
 .place-container .country {
@@ -206,9 +206,6 @@ body{
     margin-top: 15px;
   }
 
-  .place-container .time-zone {
-    font-size:20px;
-  }
 
   .current-info .others {
     padding: 12px;

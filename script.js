@@ -209,19 +209,22 @@ function initMap() {
   const input = document.getElementById('pac-input')
   const searchBox = new google.maps.places.SearchBox(input)
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
-  var newMarkerLat= mapLat;
-  var newMarkerLng= mapLng;
-  markers.push(
-    new google.maps.Marker({
-      map: map,
-      icon: iconImage,
-      position: { lat: newMarkerLat, lng: newMarkerLng},
-      icon: iconImage,
-      animation: google.maps.Animation.BOUNCE,
- 
-    })
-  )
-  
+  if(localStorage.length>0){
+
+    var newMarkerLat= mapLat;
+    var newMarkerLng= mapLng;
+    markers.push(
+      new google.maps.Marker({
+        map: map,
+        icon: iconImage,
+        position: { lat: newMarkerLat, lng: newMarkerLng},
+        icon: iconImage,
+        animation: google.maps.Animation.BOUNCE,
+        
+      })
+      )
+    }
+      
   map.addListener('bounds_changed', () => {
     searchBox.setBounds(map.getBounds())
     
@@ -380,6 +383,7 @@ function display(){
 document.querySelector(".weather-planner").style.display ="flex"
 document.querySelector(".others").style.display ="flex"
 document.querySelector(".future-forecast").style.display ="flex"
+document.querySelector("#time-zone").style.display ="flex"
 }
 
 
