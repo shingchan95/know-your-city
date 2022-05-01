@@ -12,8 +12,8 @@ var LocaLng;
 var count = 1
 
 
-LocalGet
-addcity()
+localCheck()
+
 
 function getApi() {
   var iLa= LocaLat
@@ -147,7 +147,6 @@ function getApi() {
 
 
 function citySearch(){
-  LocalGet()
   var APIkey = '137f617b3a8be25de11fcd61cb376091'
   var cityLat= LocaLat
   var cityLon= LocaLng
@@ -187,8 +186,21 @@ function hideMarkers() {
 }
 
 function initMap() {
+  LocalGet()
+  var mapLat;
+  var mapLng;
+
+  if(localStorage.length>0){
+     mapLat=JSON.parse(LocaLat)
+     mapLng=JSON.parse(LocaLng)
+
+  }
+  else{
+    mapLat= 53.481
+    mapLng= -2.243
+  }
  
-  const myLatlng = { lat: 53.4795, lng: -2.2451 }
+  const myLatlng = { lat: mapLat, lng: mapLng }
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
     center: myLatlng,
@@ -197,6 +209,18 @@ function initMap() {
   const input = document.getElementById('pac-input')
   const searchBox = new google.maps.places.SearchBox(input)
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
+  var newMarkerLat= mapLat;
+  var newMarkerLng= mapLng;
+  markers.push(
+    new google.maps.Marker({
+      map: map,
+      icon: iconImage,
+      position: { lat: newMarkerLat, lng: newMarkerLng},
+      icon: iconImage,
+      animation: google.maps.Animation.BOUNCE,
+ 
+    })
+  )
   
   map.addListener('bounds_changed', () => {
     searchBox.setBounds(map.getBounds())
@@ -205,9 +229,9 @@ function initMap() {
   })
   
   searchBox.addListener('places_changed', () => {
-    
-    getApi()
     hideMarkers()
+    
+
 
     const places = searchBox.getPlaces()
 
@@ -233,14 +257,19 @@ function initMap() {
 
       //input cooridinate
       inputLat = place.geometry.location.lat()
-      inputLng = place.geometry.location.lng()  
-
+      inputLng = place.geometry.location.lng()
+      
       LocalSave()
+      LocalGet()
+      citySearch()
+      getApi()
+
+   
       // Create a marker for each place.
       markers.push(
         new google.maps.Marker({
-          map,
-          icon,
+          map: map,
+          icon: iconImage,
           title: place.name,
           position: place.geometry.location,
           icon: iconImage,
@@ -248,7 +277,7 @@ function initMap() {
      
         })
       )
-        
+
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport)
@@ -283,14 +312,16 @@ function initMap() {
         animation: google.maps.Animation.BOUNCE,
         
       })
-      
-      
       )
       
-      getApi()
-      citySearch()
+
       display()
       LocalSave()
+      LocalGet()
+      citySearch()
+      getApi()
+
+
      
   
       console.log(inputLat)
@@ -357,19 +388,29 @@ document.querySelector(".future-forecast").style.display ="flex"
 function LocalSave(){
   localStorage.setItem("lat-history",JSON.stringify(inputLat)) 
   localStorage.setItem("lng-history",JSON.stringify(inputLng)) 
+
 }
   
 
 function LocalGet(){
   LocaLat= localStorage.getItem("lat-history")
   LocaLng= localStorage.getItem("lng-history")
-  if(LocaLat!==null || LocaLng!==null){
-    getApi()
-
-
-
-  }
+ 
  
 }
 
-//change the API latlon variable to localstorage 
+
+
+function localCheck(){ 
+  if(localStorage.length>0){
+    display()
+    LocalGet()
+    citySearch()
+    getApi()
+
+  }
+  else{
+    return
+   }
+
+  }
