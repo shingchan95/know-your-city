@@ -10,6 +10,21 @@ var LocaLat;
 var LocaLng;
 
 var count = 1
+var imgIcon0= document.getElementById("icon0")
+var imgIcon1= document.getElementById("icon1")
+var imgIcon2= document.getElementById("icon2")
+var imgIcon3= document.getElementById("icon3")
+var imgIcon4= document.getElementById("icon4")
+var imgIcon5= document.getElementById("icon5")
+var imgIcon6= document.getElementById("icon6")
+
+var img0 =  document.createElement('img')
+var img1 =  document.createElement('img')
+var img2 =  document.createElement('img')
+var img3 =  document.createElement('img')
+var img4 =  document.createElement('img')
+var img5 =  document.createElement('img')
+var img6 =  document.createElement('img')
 
 
 localCheck()
@@ -31,110 +46,145 @@ function getApi() {
       return response.json()
     })
     .then(function (data) {
+      console.log(data)
 
+
+
+      curingData = "https://openweathermap.org/img/wn/"+data.current.weather[0].icon +"@2x.png"
+      d1IData= "https://openweathermap.org/img/wn/"+data.daily[1].weather[0].icon +"@2x.png"
+      d2IData= "https://openweathermap.org/img/wn/"+data.daily[2].weather[0].icon +"@2x.png"
+      d3IData= "https://openweathermap.org/img/wn/"+data.daily[3].weather[0].icon +"@2x.png"
+      d4IData= "https://openweathermap.org/img/wn/"+data.daily[4].weather[0].icon +"@2x.png"
+      d5IData= "https://openweathermap.org/img/wn/"+data.daily[5].weather[0].icon +"@2x.png"
+      d6IData= "https://openweathermap.org/img/wn/"+data.daily[6].weather[0].icon +"@2x.png"
+
+      
+      img0.src= curingData 
+      img1.src= d1IData
+      img2.src= d2IData
+      img3.src= d3IData
+      img4.src= d4IData
+      img5.src= d5IData
+      img6.src= d6IData
+
+      imgIcon0.appendChild(img0)
+      imgIcon1.appendChild(img1)
+      imgIcon2.appendChild(img2)
+      imgIcon3.appendChild(img3)
+      imgIcon4.appendChild(img4)
+      imgIcon5.appendChild(img5)
+      imgIcon6.appendChild(img6)
+
+      
+
+
+
+
+
+      .classList.add("w-icon")
 
 
       const currentHumidity = document.getElementById('getHumidity')
-      currentHumidity.textContent = data.current.humidity
+      currentHumidity.textContent = data.current.humidity+" %"
       const currentPressure = document.getElementById('getPressure')
-      currentPressure.textContent = data.current.pressure
+      currentPressure.textContent = data.current.pressure+" hPa" 
       const currentWindSpeed = document.getElementById('getWindSpeed')
-      currentWindSpeed.textContent = data.current.wind_speed
+      currentWindSpeed.textContent = data.current.wind_speed+" mph"
       // const sunriseToday = document.getElementById('getSunrise')
       // sunriseToday.textContent = data.current.sunrise
       // const sunsetToday = document.getElementById('getSunset')
       // sunsetToday.textContent = data.current.sunset
       const tempToday = document.getElementById('getTemp')
-      tempToday.textContent = data.current.temp
+      tempToday.textContent = data.current.temp+" °C"
       
       //week 0
       const tDay0 = document.getElementById('tempDay0')
-      tDay0.textContent = data.daily[0].temp.day
+      tDay0.textContent = data.daily[1].temp.day+" °C"
       const tNight0 = document.getElementById('tempNight0')
-      tNight0.textContent = data.daily[0].temp.night
+      tNight0.textContent = data.daily[1].temp.night+" °C"
       const pressure0 = document.getElementById('pressureDay0')
-      pressure0.textContent = data.daily[0].pressure
+      pressure0.textContent = data.daily[1].pressure+" hPa"
       const humidity0 = document.getElementById('humidityDay0')
-      humidity0.textContent = data.daily[0].humidity
+      humidity0.textContent = data.daily[1].humidity+" %"
       // const sunrise0 = document.getElementById('sunriseDay0')
-      // sunrise0.textContent = data.daily[0].sunrise
+      // sunrise0.textContent = data.daily[1].sunrise
       // const sunset0 = document.getElementById('sunsetDay0')
-      // sunset0.textContent = data.daily[0].sunset
+      // sunset0.textContent = data.daily[1].sunset
 
 
       //week 1
 
       const tDay1 = document.getElementById('tempDay1')
-      tDay1.textContent = data.daily[1].temp.day
+      tDay1.textContent = data.daily[2].temp.day+" °C"
       const tNight1 = document.getElementById('tempNight1')
-      tNight1.textContent = data.daily[1].temp.night
+      tNight1.textContent = data.daily[2].temp.night+" °C"
       const pressure1 = document.getElementById('pressureDay1')
-      pressure1.textContent = data.daily[1].pressure
+      pressure1.textContent = data.daily[2].pressure+" hPa"
       const humidity1 = document.getElementById('humidityDay1')
-      humidity1.textContent = data.daily[1].humidity
+      humidity1.textContent = data.daily[2].humidity+" %"
       // const sunrise1 = document.getElementById('sunriseDay1')
-      // sunrise1.textContent = data.daily[1].sunrise
+      // sunrise1.textContent = data.daily[2].sunrise
       // const sunset1 = document.getElementById('sunsetDay1')
-      // sunset1.textContent = data.daily[1].sunset
+      // sunset1.textContent = data.daily[2].sunset
 
       //week 2
 
       const tDay2 = document.getElementById('tempDay2')
-      tDay2.textContent = data.daily[2].temp.day
+      tDay2.textContent = data.daily[3].temp.day+" °C"
       const tNight2 = document.getElementById('tempNight2')
-      tNight2.textContent = data.daily[2].temp.night
+      tNight2.textContent = data.daily[3].temp.night+" °C"
       const pressure2 = document.getElementById('pressureDay2')
-      pressure2.textContent = data.daily[2].pressure
+      pressure2.textContent = data.daily[3].pressure+" hPa"
       const humidity2 = document.getElementById('humidityDay2')
-      humidity2.textContent = data.daily[2].humidity
+      humidity2.textContent = data.daily[3].humidity+" %"
       // const sunrise2 = document.getElementById('sunriseDay2')
-      // sunrise2.textContent = data.daily[2].sunrise
+      // sunrise2.textContent = data.daily[3].sunrise
       // const sunset2 = document.getElementById('sunsetDay2')
-      // sunset2.textContent = data.daily[2].sunset
+      // sunset2.textContent = data.daily[3].sunset
 
       //week 3
 
       const tDay3 = document.getElementById('tempDay3')
-      tDay3.textContent = data.daily[3].temp.day
+      tDay3.textContent = data.daily[4].temp.day+" °C"
       const tNight3 = document.getElementById('tempNight3')
-      tNight3.textContent = data.daily[3].temp.night
+      tNight3.textContent = data.daily[4].temp.night+" °C"
       const pressure3 = document.getElementById('pressureDay3')
-      pressure3.textContent = data.daily[3].pressure
+      pressure3.textContent = data.daily[4].pressure+" hPa"
       const humidity3 = document.getElementById('humidityDay3')
-      humidity3.textContent = data.daily[3].humidity
+      humidity3.textContent = data.daily[4].humidity+" %"
       // const sunrise3 = document.getElementById('sunriseDay3')
-      // sunrise3.textContent = data.daily[3].sunrise
+      // sunrise3.textContent = data.daily[4].sunrise
       // const sunset3 = document.getElementById('sunsetDay3')
-      // sunset3.textContent = data.daily[3].sunset
+      // sunset3.textContent = data.daily[4].sunset
 
       //week 4
 
       const tDay4 = document.getElementById('tempDay4')
-      tDay4.textContent = data.daily[4].temp.day
+      tDay4.textContent = data.daily[5].temp.day+" °C"
       const tNight4 = document.getElementById('tempNight4')
-      tNight4.textContent = data.daily[4].temp.night
+      tNight4.textContent = data.daily[5].temp.night+" °C"
       const pressure4 = document.getElementById('pressureDay4')
-      pressure4.textContent = data.daily[4].pressure
+      pressure4.textContent = data.daily[5].pressure+" hPa"
       const humidity4 = document.getElementById('humidityDay4')
-      humidity4.textContent = data.daily[4].humidity
+      humidity4.textContent = data.daily[5].humidity+" %"
       // const sunrise4 = document.getElementById('sunriseDay4')
-      // sunrise4.textContent = data.daily[4].sunrise
+      // sunrise4.textContent = data.daily[5].sunrise
       // const sunset4 = document.getElementById('sunsetDay4')
-      // sunset4.textContent = data.daily[4].sunset
+      // sunset4.textContent = data.daily[5].sunset
 
       //week 5
       const tDay5 = document.getElementById('tempDay5')
-      tDay5.textContent = data.daily[5].temp.day
+      tDay5.textContent = data.daily[6].temp.day+" °C"
       const tNight5 = document.getElementById('tempNight5')
-      tNight5.textContent = data.daily[5].temp.night
+      tNight5.textContent = data.daily[6].temp.night+" °C"
       const pressure5 = document.getElementById('pressureDay5')
-      pressure5.textContent = data.daily[5].pressure
+      pressure5.textContent = data.daily[6].pressure+" hPa"
       const humidity5 = document.getElementById('humidityDay5')
-      humidity5.textContent = data.daily[5].humidity
+      humidity5.textContent = data.daily[6].humidity+" %"
       // const sunrise5 = document.getElementById('sunriseDay5')
-      // sunrise5.textContent = data.daily[5].sunrise
+      // sunrise5.textContent = data.daily[6].sunrise
       // const sunset5 = document.getElementById('sunsetDay5')
-      // sunset5.textContent = data.daily[5].sunset
+      // sunset5.textContent = data.daily[6].sunset
 
 
     
@@ -418,3 +468,4 @@ function localCheck(){
    }
 
   }
+

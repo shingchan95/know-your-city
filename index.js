@@ -22,3 +22,25 @@ setInterval(() => {
 
 
 }, 1000);
+
+displayDay()
+function displayDay(){
+    var day1Name = document.getElementById("day1")
+    var day2Name = document.getElementById("day2")
+    var day3Name = document.getElementById("day3")
+    var day4Name = document.getElementById("day4")
+    var day5Name = document.getElementById("day5")
+    var day6Name = document.getElementById("day6")
+    var time = new Date()
+    var day = time.getDay()
+  
+
+    day1Name.textContent=days[day+1]
+    day2Name.textContent=days[day+2]
+    day3Name.textContent=days[day+3]
+    day4Name.textContent=days[day+4]
+    day5Name.textContent=days[day+5]
+    day6Name.textContent=days[day-1]
+
+
+}
