@@ -150,7 +150,7 @@ function citySearch(){
   var APIkey = '137f617b3a8be25de11fcd61cb376091'
   var cityLat= LocaLat
   var cityLon= LocaLng
-  var weatherAPI="http://api.openweathermap.org/geo/1.0/reverse?lat="+cityLat+"&lon="+cityLon+"&appid="+APIkey
+  var weatherAPI="https://api.openweathermap.org/geo/1.0/reverse?lat="+cityLat+"&lon="+cityLon+"&appid="+APIkey
 
   fetch(weatherAPI)
     .then(function (response) {
