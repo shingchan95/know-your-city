@@ -61,8 +61,13 @@ body{
 
 .place-container .country {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: bolder;
   display:flex;
+}
+
+#time-zone {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .others,
