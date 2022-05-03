@@ -6,7 +6,7 @@ const countryEl = document.getElementById('country');
 const weatherForecastEl = document.getElementById('weather-forecast');
 const currentTempEl = document.getElementById ('current-temp');
 
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 setInterval(() => {
@@ -31,16 +31,21 @@ function displayDay(){
     var day4Name = document.getElementById("day4")
     var day5Name = document.getElementById("day5")
     var day6Name = document.getElementById("day6")
-    var time = new Date()
-    var day = time.getDay()
+    var today = new Date()
+    var day = today.getDay()
+
   
+    
 
     day1Name.textContent=days[day+1]
     day2Name.textContent=days[day+2]
     day3Name.textContent=days[day+3]
     day4Name.textContent=days[day+4]
     day5Name.textContent=days[day+5]
-    day6Name.textContent=days[day-1]
+    day6Name.textContent=days[day+6]
+
+    console.log(days[day+4])
+
 
 
 }
